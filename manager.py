@@ -23,6 +23,12 @@ def update_task_name(tasks, task_index, new_task_name):
     return
 
 
+def complete_task(tasks, task_index):
+    task_index_adjusted = int(task_index) - 1
+    tasks[task_index_adjusted]["completada"] = True
+    print(f"Tarefa {task_index} marcada como completada")
+
+
 tasks = []
 while True:
     print("\nMenu do Gerenciador de Lista de tarefas:")
@@ -38,14 +44,21 @@ while True:
     if choose == "1":
         task_name = input("Digite o nome da tarefa que deseja adicionar: ")
         add_task(tasks, task_name)
+
     elif choose == "2":
         show_tasks(tasks)
+
     elif choose == "3":
         show_tasks(tasks)
         task_index = input(
             "Digite o número da tarefa que deseja atualizar: ")
         new_task_name = input("Digite o novo nome da tarefa: ")
         update_task_name(tasks, task_index, new_task_name)
+
+    elif choose == "4":
+        show_tasks(tasks)
+        task_index = input("Digite o número da tarefa que deseja completar: ")
+        complete_task(tasks, task_index)
 
     elif choose == "6":
         break
