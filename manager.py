@@ -27,6 +27,15 @@ def complete_task(tasks, task_index):
     task_index_adjusted = int(task_index) - 1
     tasks[task_index_adjusted]["completada"] = True
     print(f"Tarefa {task_index} marcada como completada")
+    return
+
+
+def delete_tasks_finished(tasks):
+    for task in tasks:
+        if task["completada"]:
+            tasks.remove(task)
+            print("Tarefas completas foram deletadas.")
+    return
 
 
 tasks = []
@@ -59,6 +68,10 @@ while True:
         show_tasks(tasks)
         task_index = input("Digite o número da tarefa que deseja completar: ")
         complete_task(tasks, task_index)
+
+    elif choose == "5":
+        delete_tasks_finished(tasks)
+        show_tasks(tasks)
 
     elif choose == "6":
         break
